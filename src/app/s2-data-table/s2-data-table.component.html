@@ -60,21 +60,29 @@
                     <tr>
                         <td>
                             <mat-form-field class="example-full-width">
-                                <input matInput placeholder="Description" name="description" [(ngModel)]="s2Row.description" >
+                                <textarea matInput placeholder="Description" name="description" [(ngModel)]="s2Row.description" ></textarea>
                             </mat-form-field>
                         </td>
                     </tr>
                     <tr>
                             <td>
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Reader(s)"  name="readers" required>
+                                    <mat-label>Readers</mat-label>
+                                    <mat-select (selectionChange)="select($event)" name="readersSelecter" value="Reader F1"  [(ngModel)]="readersSelect"  >
+                                        <!-- <mat-select (selectionChange)="select($event)" name="readersSelecter" [(value)]="readersSelect2"  [(ngModel)]="readersSelect"  > -->
+                                      <mat-option *ngFor="let reader of readersList" [(value)]="readersSelect2">
+                                        {{reader.name}}
+                                      </mat-option>
+                                    </mat-select>
+                                  
+                                  <!-- <input matInput placeholder="Reader(s)"  name="readers" required> -->
                             
                                 </mat-form-field>
                             </td>
                         </tr>
                 </table>
               </form>
-              <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+              <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
             </mat-card-content>
             <mat-card-actions>
               <button mat-raised-button (click)="save(true)" color="primary">Save</button>

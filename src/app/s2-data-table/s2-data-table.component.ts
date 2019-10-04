@@ -76,18 +76,34 @@ export class S2DataTableComponent implements AfterViewInit, OnInit {
 
    //dataSource: S2DataTableDataSource;
   dataSource = new MatTableDataSource<S2DataTableItem>(this.data);
+  public readersList;
   public s2Row:s2RowItem;
+  public readersSelect;
+  public readersSelect2;
+
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name','readerType','readers'];
 constructor() {
   console.log('construct')
   this.buildReaderIdLookup();
   this.updateLookups(this.data)
+  this.readersList = this.readers;
+
 }
   ngOnInit() {
     //this.dataSource = new S2DataTableDataSource();
     let temp = S2_DATA[0];
     this.s2Row = new s2RowItem(temp.id,temp.name, temp.Description, temp.readers);
+    this.readersSelect = {id: 12, typeId: 1, name: "Reader F3"};
+    this.readersSelect2 = "Reader F3"
+  }
+
+  select(x){
+    console.log("select",x)
+    console.log(this.readersSelect)
+    console.log(this.readersSelect2)
+
+    
   }
   save(action:boolean) {
     if (action) {
@@ -98,6 +114,8 @@ constructor() {
         console.log(this.dataSource.data[index]);
         this.dataSource.data[index].Description = this.s2Row.description;
         this.dataSource.data[index].name = this.s2Row.name;
+    } else {
+      this.readersSelect = {id: 12, typeId: 1, name: "Reader F3"};
     }
   }
   onRowClicked(row) {

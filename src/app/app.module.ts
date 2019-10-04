@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {CustomMaterialModule} from "./material.module";
 import {MatInputModule, MatTableModule, MatToolbarModule, MatProgressSpinnerModule } from '@angular/material';
-
+import {FlexLayoutModule} from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { S2MainDisplayComponent } from './s2-main-display/s2-main-display.component';
@@ -24,7 +24,8 @@ import { S2DataTableComponent } from './s2-data-table/s2-data-table.component';
     CustomMaterialModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

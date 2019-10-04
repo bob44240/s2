@@ -59,6 +59,9 @@ export class S2MainDisplayComponent implements OnInit {
 
   constructor() { }
 
+  onKeyUp(){
+    console.log("fred");
+  }
   displayedColumns: string[] = [ 'name', 'Description', 'other'];
   dataSource = new MatTableDataSource(access_level_data);
 

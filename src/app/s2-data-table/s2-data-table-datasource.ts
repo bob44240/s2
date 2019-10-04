@@ -1,11 +1,12 @@
 import { DataSource } from '@angular/cdk/collections';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { 
+  MatSort, 
+  MatPaginator, 
+  MatTableDataSource } from '@angular/material';
+// import { MatPaginator } from '@angular/material/paginator';
+// import { MatSort } from '@angular/material/sort';
 import { map } from 'rxjs/operators';
 import { Observable, of as observableOf, merge } from 'rxjs';
-
-
-
 
 export interface S2DataTableItem {
   id: number;
@@ -35,16 +36,16 @@ export interface ReaderTypes {
   name: string;
 }
 
-var access_level_data: AccessLevels[] = [
-{ id: 1, name: "Morning 9:00 - 10:00", readerId: 10, Description: "Morning Front door Access", readerType:" ", readers:""},
-{ id: 2,name: "Morning 10:00 - 11:00",readerId: 11,Description: "Back door", readerType:" ", readers:""},
-{  id: 3, name: "Morning 11:00 - 12:00",readerId: 12,Description: "Side door", readerType:"fred", readers:""},
-{  id: 4,name: "Evening 3:00 - 4:00",readerId: 13,Description: "Fire pole", readerType:"fred", readers:""},
-{ id: 5,name: "Evening5:00 - 6:00",readerId: 14, Description: "Window", readerType:"fred", readers:"" },
-{  id: 6, name: "All Day Elevator",readerId: 15,Description: "Fire escape", readerType:"fred", readers:""},
-{  id: 7, name: "All Day Back Door",readerId: 16,Description: "Helipad", readerType:"fred", readers:""},
-{ id: 8, name: "All Day Supply Door",readerId: 17,  Description: "Submarine", readerType:"fred", readers:""}
-]
+// var access_level_data: AccessLevels[] = [
+// { id: 1, name: "Morning 9:00 - 10:00", readerId: 10, Description: "Morning Front door Access", readerType:" ", readers:""},
+// { id: 2,name: "Morning 10:00 - 11:00",readerId: 11,Description: "Back door", readerType:" ", readers:""},
+// {  id: 3, name: "Morning 11:00 - 12:00",readerId: 12,Description: "Side door", readerType:"fred", readers:""},
+// {  id: 4,name: "Evening 3:00 - 4:00",readerId: 13,Description: "Fire pole", readerType:"fred", readers:""},
+// { id: 5,name: "Evening5:00 - 6:00",readerId: 14, Description: "Window", readerType:"fred", readers:"" },
+// {  id: 6, name: "All Day Elevator",readerId: 15,Description: "Fire escape", readerType:"fred", readers:""},
+// {  id: 7, name: "All Day Back Door",readerId: 16,Description: "Helipad", readerType:"fred", readers:""},
+// { id: 8, name: "All Day Supply Door",readerId: 17,  Description: "Submarine", readerType:"fred", readers:""}
+// ]
 
 
 
@@ -82,18 +83,21 @@ var readerTypes_data: ReaderTypes[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class S2DataTableDataSource extends DataSource<S2DataTableItem> {
+export class S2DataTableDataSource extends MatTableDataSource<S2DataTableItem> {
   data: S2DataTableItem[] = S2_DATA;
   paginator: MatPaginator;
   sort: MatSort;
   readers:Readers[]= readers_data;
   readerTypes:ReaderTypes[] = readerTypes_data;
 
+  //dataSource = new MatTableDataSource<S2DataTableItem[]>(S2_DATA);
+
   readerIdLookup: Map<number, any> = new Map<number, any>();
   typeIdLookup: Map<number, string>= new Map<number, string>();
 
   constructor() {
     super();
+    console.log('s2d')
     this.buildReaderIdLookup();
   }
 

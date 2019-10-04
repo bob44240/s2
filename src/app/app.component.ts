@@ -7,5 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 's2';
+
+  onKey(event: any) {
+    console.log("FRED");
+  }
+  onKeyUp() {
+    console.log("FRED");
+  }
+  keypress() {
+    console.log("FRED");
+  }
 }
 //Try this 

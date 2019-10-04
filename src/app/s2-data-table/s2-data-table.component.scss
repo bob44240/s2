@@ -1,8 +1,10 @@
 table {
-  width: 700px;
+  width: 100%;
 }
 
-
+.border {
+  background-color: lightgrey;
+}
 .mat-header-cell:first-child,.mat-cell:first-child{
   flex:5%;
 }

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms';
 import {CustomMaterialModule} from "./material.module";
 import {MatInputModule, MatTableModule, MatToolbarModule, MatProgressSpinnerModule } from '@angular/material';
 import {FlexLayoutModule} from '@angular/flex-layout';
@@ -25,7 +26,8 @@ import { S2DataTableComponent } from './s2-data-table/s2-data-table.component';
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

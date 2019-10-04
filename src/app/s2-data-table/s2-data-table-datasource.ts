@@ -83,7 +83,7 @@ var readerTypes_data: ReaderTypes[] = [
  * encapsulate all logic for fetching and manipulating the displayed data
  * (including sorting, pagination, and filtering).
  */
-export class S2DataTableDataSource extends MatTableDataSource<S2DataTableItem> {
+export class S2DataTableDataSource extends DataSource<S2DataTableItem> {
   data: S2DataTableItem[] = S2_DATA;
   paginator: MatPaginator;
   sort: MatSort;

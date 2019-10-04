@@ -1,7 +1,10 @@
 table {
   width: 100%;
+  // margin:4px;
 }
-
+.highlight{
+  background: #42A948; /* green */
+}
 .border {
   background-color: lightgrey;
 }
@@ -13,4 +16,22 @@ table {
 }
 .mat-header-cell:last-child,.mat-cell:last-child{
   flex:10%
+}
+// .content {
+//   width:1000px;
+//   padding: 4px;
+//   margin: 4px;
+// }
+
+.fixer {
+  padding: 10px;
+  margin: 10px;
+}
+
+.filter {
+  color: black;
+  background-color: darkgrey;
+}
+.acName{
+  margin-top:29px;
 }

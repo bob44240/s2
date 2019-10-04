@@ -1,6 +1,4 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-// import { MatPaginator } from '@angular/material/paginator';
-// import { MatSort } from '@angular/material/sort';
 import { MatTable } from '@angular/material/table';
 import { 
   MatSort, 
@@ -69,7 +67,6 @@ export class S2DataTableComponent implements AfterViewInit, OnInit {
   readers:Readers[]= readers_data;
   readerTypes:ReaderTypes[] = readerTypes_data;
 
-  //dataSource = new MatTableDataSource<S2DataTableItem[]>(S2_DATA);
 
   readerIdLookup: Map<number, any> = new Map<number, any>();
   typeIdLookup: Map<number, string>= new Map<number, string>();
@@ -84,34 +81,24 @@ export class S2DataTableComponent implements AfterViewInit, OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['name','readerType','readers'];
 constructor() {
-  console.log('construct')
   this.buildReaderIdLookup();
   this.updateLookups(this.data)
   this.readersList = this.readers;
 
 }
   ngOnInit() {
-    //this.dataSource = new S2DataTableDataSource();
     let temp = S2_DATA[0];
     this.s2Row = new s2RowItem(temp.id,temp.name, temp.Description, temp.readers);
     this.readersSelect = {id: 12, typeId: 1, name: "Reader F3"};
     this.readersSelect2 = "Reader F3"
   }
 
-  select(x){
-    console.log("select",x)
-    console.log(this.readersSelect)
-    console.log(this.readersSelect2)
+  select(xreader){}
 
-    
-  }
   save(action:boolean) {
     if (action) {
-        console.log(this.s2Row);
         let t = this.s2Row;
-        console.log(this.dataSource);
         let index = t.id-1
-        console.log(this.dataSource.data[index]);
         this.dataSource.data[index].Description = this.s2Row.description;
         this.dataSource.data[index].name = this.s2Row.name;
     } else {
@@ -119,14 +106,10 @@ constructor() {
     }
   }
   onRowClicked(row) {
-    console.log('Row clicked: ', row);
-
     this.s2Row.name = row.name;
     this.s2Row.description = row.Description;
     this.s2Row.id = row.id;
     this.s2Row.readers = row.readers;
-
-
 }
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -144,7 +127,6 @@ constructor() {
       let readerType = this.typeIdLookup.get(temp.typeId);
       item.readerType = this.typeIdLookup.get(temp.typeId);
     })
-    //console.log(data);
   }
   
   buildReaderIdLookup(){
@@ -152,15 +134,9 @@ constructor() {
       this.typeIdLookup.set(item.id,item.name)
     })
     this.readers.forEach(item => {
-      console.log(item)
       this.readerIdLookup.set(item.id,item)
     })
-    // console.log(this.readerIdLookup)
-    // console.log(this.readerIdLookup.get(10))
-  
-    // console.log(this.typeIdLookup)
-    // console.log(this.typeIdLookup.get(4))
-  
+
   }
    
 }
